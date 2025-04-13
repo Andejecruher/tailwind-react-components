@@ -1,6 +1,6 @@
 import type React from "react"
 import { useState } from "react"
-import { CodeBlock } from "@src/components/code-block"
+import { CodeHighlighter } from "@src/components/ui/code-highlighter"
 
 interface ComponentPreviewProps {
     title: string
@@ -50,7 +50,7 @@ export function ComponentPreview({ title, description, component, code, classNam
                             {component}
                         </div>
                     ) : (
-                        <CodeBlock code={code} />
+                        <CodeHighlighter code={code} language="tsx" showLineNumbers={true} />
                     )}
                 </div>
             </div>
