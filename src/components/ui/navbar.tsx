@@ -6,13 +6,44 @@ import { Logo } from "@src/components/ui/logo"
 import { motion } from "framer-motion"
 
 const navItems = [
-    { name: "Inicio", href: "/" },
-    { name: "Botones", href: "/botones" },
-    { name: "Tarjetas", href: "/tarjetas" },
-    { name: "Formularios", href: "/formularios" },
-    { name: "Modales", href: "/modales" },
-    { name: "Tipografía", href: "/tipografia" },
+    {
+        name: "Inicio",
+        href: "/",
+        title: "Inicio - Galería de Componentes",
+        description: "Explora una galería de componentes reutilizables creados con TailwindCSS y ReactJS."
+    },
+    {
+        name: "Botones",
+        href: "/botones",
+        title: "Botones - Galería de Componentes",
+        description: "Descubre botones modernos y personalizables para tus proyectos web."
+    },
+    {
+        name: "Tarjetas",
+        href: "/tarjetas",
+        title: "Tarjetas - Galería de Componentes",
+        description: "Explora tarjetas de diseño responsivo creadas con TailwindCSS y ReactJS."
+    },
+    {
+        name: "Formularios",
+        href: "/formularios",
+        title: "Formularios - Galería de Componentes",
+        description: "Encuentra formularios estilizados y funcionales para tus aplicaciones web."
+    },
+    {
+        name: "Modales",
+        href: "/modales",
+        title: "Modales - Galería de Componentes",
+        description: "Explora modales interactivos y personalizables para mejorar la experiencia del usuario."
+    },
+    {
+        name: "Tipografía",
+        href: "/tipografia",
+        title: "Tipografía - Galería de Componentes",
+        description: "Descubre estilos tipográficos modernos y elegantes para tus proyectos."
+    },
 ]
+
 
 export default function Navbar() {
     const { pathname } = useLocation()
@@ -33,6 +64,28 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
+
+    // Update document title and meta description based on the current route
+    useEffect(() => {
+        const currentNavItem = navItems.find((item) => item.href === pathname)
+        if (currentNavItem) {
+            document.title = currentNavItem.title
+
+            // Actualizar la meta descripción
+            const metaDescription = document.querySelector('meta[name="description"]')
+            if (metaDescription) {
+                metaDescription.setAttribute("content", currentNavItem.description)
+            }
+        } else {
+            document.title = "Galería de Componentes - TailwindCSS y ReactJS"
+
+            // Descripción predeterminada
+            const metaDescription = document.querySelector('meta[name="description"]')
+            if (metaDescription) {
+                metaDescription.setAttribute("content", "Explora una galería de componentes reutilizables creados con TailwindCSS y ReactJS para acelerar el desarrollo de tus proyectos web.")
+            }
+        }
+    }, [pathname])
 
     return (
         <header
