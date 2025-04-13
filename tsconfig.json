@@ -1,4 +1,13 @@
 {
+  "compilerOptions": {
+    "baseUrl": ".", // Define la carpeta base para las rutas relativas
+    "paths": {
+      "@src/*": ["src/*"], // Alias para la carpeta src
+      "@components/*": ["src/components/*"], // Alias para componentes
+      "@utils/*": ["src/utils/*"], // Alias para utilidades
+      "@assets/*": ["src/assets/*"] // Alias para assets
+    }
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
