@@ -1,7 +1,7 @@
 import type React from "react"
 import { createContext, useEffect, useState } from "react"
 
-type Theme = "dark" | "light" | "system"
+export type Theme = "dark" | "light" | "system"
 
 type ThemeProviderProps = {
     children: React.ReactNode
@@ -24,7 +24,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
     children,
-    defaultTheme = "system",
+    defaultTheme = localStorage.getItem("theme") as Theme || "system",
     enableSystem = false,
     ...props
 }: ThemeProviderProps) {
@@ -40,7 +40,6 @@ export function ThemeProvider({
             root.classList.add(systemTheme)
             return
         }
-
         root.classList.add(theme)
     }, [theme, enableSystem])
 
