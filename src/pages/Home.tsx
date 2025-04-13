@@ -51,7 +51,7 @@ export default function Home() {
                         Explorar Componentes
                     </Link>
                     <Link
-                        to="https://github.com/tu-usuario/galeria-componentes"
+                        to="https://github.com/Andejecruher/tailwind-react-components"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
@@ -62,7 +62,7 @@ export default function Home() {
             </section>
 
             <section className="py-12">
-                <h2 className="mb-8 text-center text-3xl font-bold">Categorías de Componentes</h2>
+                <h2 className="mb-8 text-center text-3xl font-bold">Componentes</h2>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {categories.map((category) => (
                         <div
