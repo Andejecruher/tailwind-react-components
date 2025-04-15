@@ -2,119 +2,105 @@ import { Breadcrumb } from "@src/components/ui/breadcrumb"
 import { ComponentPreview } from "@src/components/ui/component-preview"
 import { PageHeader } from "@src/components/ui/page-header"
 
+
+// Importing the components for the buttons
+import { SharedButton } from "@src/components/buttons/shared-button"
+import { Button } from "@src/components/buttons/button"
+
+// Importing the code for component preview
+import buttonSource from "@components/buttons/button.tsx?raw";
+import sharedButtonSource from "@components/buttons/shared-button.tsx?raw";
+
 export default function ButtonsPage() {
-    return (
-        <div className="container mx-auto px-4 py-10">
-            <Breadcrumb items={[{ title: "Botones", href: "/botones" }]} className="mb-6" />
-            <PageHeader
-                title="Botones"
-                description="Componentes de botón con diferentes estilos y variantes."
-                className="mb-10"
-            />
-
-            <div className="grid gap-8 md:grid-cols-2">
-                <ComponentPreview
-                    title="Botón Primario"
-                    description="El botón principal para acciones destacadas."
-                    component={
-                        <button className="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200">
-                            Botón Primario
-                        </button>
-                    }
-                    code={`export function PrimaryButton() {
   return (
-    <button className="inline-flex items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200">
-      Botón Primario
-    </button>
-  )
-}`}
-                />
+    <div className="container mx-auto px-4 py-10">
+      <Breadcrumb items={[{ title: "Botones", href: "/botones" }]} className="mb-6" />
+      <PageHeader
+        title="Botones"
+        description="Componentes de botón con diferentes estilos y variantes."
+        className="mb-10"
+      />
 
-                <ComponentPreview
-                    title="Botón Secundario"
-                    description="Variante secundaria para acciones menos prominentes."
-                    component={
-                        <button className="inline-flex items-center justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600">
-                            Botón Secundario
-                        </button>
-                    }
-                    code={`export function SecondaryButton() {
-  return (
-    <button className="inline-flex items-center justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600">
-      Botón Secundario
-    </button>
-  )
-}`}
-                />
+      <div className="grid gap-8 md:grid-cols-2">
+        <ComponentPreview
+          title="Botón Primario"
+          description="El botón principal para acciones destacadas."
+          component={<Button variant="primary">Botón Primario</Button>}
+          componentName="Button"
+          componentProps={{ variant: "primary", children: "Botón Primario" }}
+          sourceCode={buttonSource} // Pass the source code as a prop
+        />
 
-                <ComponentPreview
-                    title="Botón Outline"
-                    description="Botón con borde y fondo transparente."
-                    component={
-                        <button className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700">
-                            Botón Outline
-                        </button>
-                    }
-                    code={`export function OutlineButton() {
-  return (
-    <button className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700">
-      Botón Outline
-    </button>
-  )
-}`}
-                />
+        <ComponentPreview
+          title="Botón Secundario"
+          description="Variante secundaria para acciones menos prominentes."
+          component={<Button variant="secondary">Botón Secundario</Button>}
+          componentName="Button"
+          componentProps={{ variant: "secondary", children: "Botón Secundario" }}
+          sourceCode={buttonSource} // Pass the source code as a prop
+        />
 
-                <ComponentPreview
-                    title="Botón Ghost"
-                    description="Botón sin fondo ni borde, solo visible al interactuar."
-                    component={
-                        <button className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-100">
-                            Botón Ghost
-                        </button>
-                    }
-                    code={`export function GhostButton() {
-  return (
-    <button className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-gray-100">
-      Botón Ghost
-    </button>
-  )
-}`}
-                />
+        <ComponentPreview
+          title="Botón Outline"
+          description="Botón con borde y fondo transparente."
+          component={<Button variant="outline">Botón Outline</Button>}
+          componentName="Button"
+          componentProps={{ variant: "outline", children: "Botón Outline" }}
+          sourceCode={buttonSource} // Pass the source code as a prop
+        />
 
-                <ComponentPreview
-                    title="Botón Destructivo"
-                    description="Para acciones peligrosas o irreversibles."
-                    component={
-                        <button className="inline-flex items-center justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 dark:bg-red-600 dark:text-white dark:hover:bg-red-700">
-                            Eliminar
-                        </button>
-                    }
-                    code={`export function DestructiveButton() {
-  return (
-    <button className="inline-flex items-center justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 dark:bg-red-600 dark:text-white dark:hover:bg-red-700">
-      Eliminar
-    </button>
-  )
-}`}
-                />
+        <ComponentPreview
+          title="Botón Ghost"
+          description="Botón sin fondo ni borde, solo visible al interactuar."
+          component={<Button variant="ghost">Botón Ghost</Button>}
+          componentName="Button"
+          componentProps={{ variant: "ghost", children: "Botón Ghost" }}
+          sourceCode={buttonSource} // Pass the source code as a prop
+        />
 
-                <ComponentPreview
-                    title="Botón Link"
-                    description="Botón con apariencia de enlace."
-                    component={
-                        <button className="inline-flex items-center justify-center text-sm font-medium text-blue-600 underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:text-blue-400">
-                            Botón Link
-                        </button>
-                    }
-                    code={`export function LinkButton() {
-  return (
-    <button className="inline-flex items-center justify-center text-sm font-medium text-blue-600 underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:text-blue-400">
-      Botón Link
-    </button>
+        <ComponentPreview
+          title="Botón Destructivo"
+          description="Para acciones peligrosas o irreversibles."
+          component={<Button variant="destructive">Eliminar</Button>}
+          componentName="Button"
+          componentProps={{ variant: "destructive", children: "Eliminar" }}
+        />
+
+        <ComponentPreview
+          title="Botón Link"
+          description="Botón con apariencia de enlace."
+          component={<Button variant="link">Botón Link</Button>}
+          componentName="Button"
+          componentProps={{ variant: "link", children: "Botón Link" }}
+        />
+
+        <ComponentPreview
+          title="Botón Pequeño"
+          description="Variante de tamaño pequeño."
+          component={<Button size="sm">Botón Pequeño</Button>}
+          componentName="Button"
+          componentProps={{ size: "sm", children: "Botón Pequeño" }}
+        />
+
+        <ComponentPreview
+          title="Botón Grande"
+          description="Variante de tamaño grande."
+          component={<Button size="lg">Botón Grande</Button>}
+          componentName="Button"
+          componentProps={{ size: "lg", children: "Botón Grande" }}
+
+        />
+
+        <ComponentPreview
+          title="Botón Compartir"
+          description="Botón de compartir con iconos de redes sociales."
+          component={<SharedButton label="Shared" disabled={false} />}
+          componentName="SharedButton"
+          componentProps={{ label: "Shared", disabled: false }}
+          sourceCode={sharedButtonSource} // Pass the source code as a prop
+        />
+
+      </div>
+    </div>
   )
-}`}
-                />
-            </div>
-        </div>
-    )
 }

@@ -8,3 +8,93 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+/**
+ * Genera un código de ejemplo para un componente de React
+ * @param Component - Componente de React
+ * @param props - Propiedades del componente
+ * @return Código de ejemplo como cadena
+ *
+ */
+export function getComponentSource(
+  Component: React.ComponentType<Record<string, unknown>>,
+  props: Record<string, unknown> = {}
+) {
+  // Get component name
+  const componentName = Component.displayName || Component.name || "Component";
+
+  // Convert props to string representation
+  const propsString = Object.entries(props)
+    .map(([key, value]) => {
+      if (typeof value === "string") {
+        return `${key}="${value}"`;
+      }
+      if (typeof value === "boolean" && value) {
+        return key;
+      }
+      if (typeof value === "number") {
+        return `${key}={${value}}`;
+      }
+      return null;
+    })
+    .filter(Boolean)
+    .join(" ");
+
+  // Generate component usage example
+  const usage = `<${componentName}${propsString ? ` ${propsString}` : ""}>${
+    props.children ? props.children : ""
+  }</${componentName}>`;
+
+  return usage;
+}
+
+/**
+ * Genera un código de ejemplo para un componente de React
+ * @param componentName - Nombre del componente
+ * @param props - Propiedades del componente
+ * @return Código de ejemplo como cadena
+ *
+ */
+export function formatComponentCode(
+  componentName: string,
+  props: Record<string, unknown> = {}
+) {
+  // Nota: La ruta del import dependerá de dónde se haya colocado el código fuente del componente
+  const propsEntries = Object.entries(props).filter(
+    ([key]) => key !== "children"
+  );
+
+  const propsString =
+    propsEntries.length > 0
+      ? propsEntries
+          .map(([key, value]) => {
+            if (typeof value === "string") {
+              return `  ${key}="${value}"`;
+            }
+            if (typeof value === "boolean" && value) {
+              return `  ${key}`;
+            }
+            if (typeof value === "number") {
+              return `  ${key}={${value}}`;
+            }
+            return `  ${key}={${value}}`;
+          })
+          .filter(Boolean)
+          .join("\n")
+      : "";
+
+  const childrenContent = props.children ? props.children : "";
+
+  // Generate component example code
+  return `
+  // Importar el componente desde su ubicación
+import { ${componentName} } from "@/components/ui/button"
+
+export function Example() {
+  return (
+    <${componentName}${propsEntries.length > 0 ? `\n${propsString}` : ""}${
+    childrenContent ? ">" : " />"
+  }${childrenContent ? `\n  ${childrenContent}\n</${componentName}>` : ""}
+  )
+}`;
+}
