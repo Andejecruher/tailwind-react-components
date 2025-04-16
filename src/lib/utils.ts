@@ -69,15 +69,15 @@ export function formatComponentCode(
       ? propsEntries
           .map(([key, value]) => {
             if (typeof value === "string") {
-              return `  ${key}="${value}"`;
+              return `    ${key}="${value}"`;
             }
             if (typeof value === "boolean" && value) {
-              return `  ${key}`;
+              return `    ${key}`;
             }
             if (typeof value === "number") {
-              return `  ${key}={${value}}`;
+              return `    ${key}={${value}}`;
             }
-            return `  ${key}={${value}}`;
+            return `    ${key}={${value}}`;
           })
           .filter(Boolean)
           .join("\n")
@@ -88,13 +88,13 @@ export function formatComponentCode(
   // Generate component example code
   return `
   // Importar el componente desde su ubicación
-import { ${componentName} } from "@/components/ui/button"
+import { ${componentName} } from "@/components/ui/button";
 
 export function Example() {
   return (
     <${componentName}${propsEntries.length > 0 ? `\n${propsString}` : ""}${
     childrenContent ? ">" : " />"
-  }${childrenContent ? `\n  ${childrenContent}\n</${componentName}>` : ""}
-  )
+  }${childrenContent ? `\n    ${childrenContent}\n  </${componentName}>` : ""}
+  );
 }`;
 }

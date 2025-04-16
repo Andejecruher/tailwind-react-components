@@ -2,7 +2,6 @@ import { Breadcrumb } from "@src/components/ui/breadcrumb"
 import { ComponentPreview } from "@src/components/ui/component-preview"
 import { PageHeader } from "@src/components/ui/page-header"
 
-
 // Importing the components for the buttons
 import { SharedButton } from "@src/components/buttons/shared-button"
 import { Button } from "@src/components/buttons/button"
