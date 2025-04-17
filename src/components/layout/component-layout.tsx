@@ -1,5 +1,3 @@
-import type React from "react"
-
 import { useState, useEffect } from "react"
 import { Breadcrumb } from "@src/components/ui/breadcrumb"
 import { SidebarNav } from "@src/components/ui/sidebar-nav"
@@ -11,6 +9,7 @@ import { Outlet } from "react-router-dom"
 export default function ComponentLayout() {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
+    const [breadcrumbItems, setBreadcrumbItems] = useState<{ title: string; description: string; href: string }[]>([])
 
     // Detectar si es móvil
     useEffect(() => {
@@ -35,11 +34,15 @@ export default function ComponentLayout() {
 
     return (
         <div className="container mx-auto px-4 py-10">
-            <Breadcrumb items={[]} className="mb-6" />
+            <Breadcrumb items={breadcrumbItems} className="mb-6" />
 
             {/* Header con efecto de gradiente */}
             <div className="relative mb-12 overflow-hidden rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 p-8 dark:from-gray-900 dark:to-gray-800">
-               /* Título y descripción */
+                {/* Título y descripción */}
+                <div className="relative z-10">
+                    <h1 className="text-3xl font-bold tracking-tight md:text-4xl">{breadcrumbItems[0]?.title}</h1>
+                    {breadcrumbItems[0]?.description && <p className="mt-3 text-lg text-gray-600 dark:text-gray-300">{breadcrumbItems[0]?.description}</p>}
+                </div>
 
                 {/* Elementos decorativos */}
                 <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-gray-200/40 to-transparent dark:from-gray-700/40"></div>
@@ -74,7 +77,7 @@ export default function ComponentLayout() {
                             className="mb-6 overflow-hidden"
                         >
                             <div className="rounded-xl bg-white p-5 shadow-lg dark:bg-gray-800">
-                                <SidebarNav />
+                                <SidebarNav setBreadcrumbItems={setBreadcrumbItems} />
                             </div>
                         </motion.div>
                     )}
@@ -92,7 +95,7 @@ export default function ComponentLayout() {
                             <h3 className="mb-4 px-3 text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                                 Navegación
                             </h3>
-                            <SidebarNav />
+                            <SidebarNav setBreadcrumbItems={setBreadcrumbItems} />
                         </motion.div>
                     </div>
                 </div>

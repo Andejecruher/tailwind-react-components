@@ -13,35 +13,23 @@ const navItems = [
         description: "Explora una galería de componentes reutilizables creados con TailwindCSS y ReactJS."
     },
     {
-        name: "Botones",
+        name: "Componentes",
         href: "/botones",
-        title: "Botones - Galería de Componentes",
-        description: "Descubre botones modernos y personalizables para tus proyectos web."
+        title: "Componentes - Galería de Componentes",
+        description: "Descubre una colección de componentes reutilizables para tus proyectos."
     },
     {
-        name: "Tarjetas",
-        href: "/tarjetas",
-        title: "Tarjetas - Galería de Componentes",
-        description: "Explora tarjetas de diseño responsivo creadas con TailwindCSS y ReactJS."
+        name: "Documentación",
+        href: "/docs",
+        title: "Documentación - Galería de Componentes",
+        description: "Consulta la documentación para aprender a usar los componentes."
     },
     {
-        name: "Formularios",
-        href: "/formularios",
-        title: "Formularios - Galería de Componentes",
-        description: "Encuentra formularios estilizados y funcionales para tus aplicaciones web."
-    },
-    {
-        name: "Modales",
-        href: "/modales",
-        title: "Modales - Galería de Componentes",
-        description: "Explora modales interactivos y personalizables para mejorar la experiencia del usuario."
-    },
-    {
-        name: "Tipografía",
-        href: "/tipografia",
-        title: "Tipografía - Galería de Componentes",
-        description: "Descubre estilos tipográficos modernos y elegantes para tus proyectos."
-    },
+        name: "Sobre mí",
+        href: "/sobre-mi",
+        title: "Sobre mí - Galería de Componentes",
+        description: "Conoce más sobre el creador de esta galería de componentes."
+    }
 ]
 
 

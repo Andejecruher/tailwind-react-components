@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion"
 interface ComponentCategory {
     title: string
     href: string
+    metaTitle?: string
+    description?: string
     items: {
         title: string
         href: string
@@ -17,6 +19,8 @@ const componentCategories: ComponentCategory[] = [
     {
         title: "Botones",
         href: "/botones",
+        metaTitle: "Botones - Galería de Componentes",
+        description: "Descubre botones modernos y personalizables para tus proyectos web.",
         items: [
             { title: "Botón Primario", href: "/botones#boton-primario" },
             { title: "Botón Secundario", href: "/botones#boton-secundario" },
@@ -32,6 +36,8 @@ const componentCategories: ComponentCategory[] = [
     {
         title: "Tarjetas",
         href: "/tarjetas",
+        metaTitle: "Tarjetas - Galería de Componentes",
+        description: "Explora tarjetas de diseño responsivo creadas con TailwindCSS y ReactJS.",
         items: [
             { title: "Tarjeta Básica", href: "/tarjetas#basica" },
             { title: "Tarjeta de Producto", href: "/tarjetas#producto" },
@@ -40,6 +46,8 @@ const componentCategories: ComponentCategory[] = [
     {
         title: "Formularios",
         href: "/formularios",
+        metaTitle: "Formularios - Galería de Componentes",
+        description: "Encuentra formularios estilizados y funcionales para tus aplicaciones web.",
         items: [
             { title: "Formulario de Contacto", href: "/formularios#contacto" },
             { title: "Formulario de Registro", href: "/formularios#registro" },
@@ -48,6 +56,8 @@ const componentCategories: ComponentCategory[] = [
     {
         title: "Modales",
         href: "/modales",
+        metaTitle: "Modales - Galería de Componentes",
+        description: "Explora modales interactivos y personalizables para mejorar la experiencia del usuario.",
         items: [
             { title: "Diálogo Básico", href: "/modales#basico" },
             { title: "Diálogo de Alerta", href: "/modales#alerta" },
@@ -57,6 +67,8 @@ const componentCategories: ComponentCategory[] = [
     {
         title: "Tipografía",
         href: "/tipografia",
+        metaTitle: "Tipografía - Galería de Componentes",
+        description: "Descubre estilos tipográficos modernos y elegantes para tus proyectos.",
         items: [
             { title: "Encabezados", href: "/tipografia#encabezados" },
             { title: "Párrafos", href: "/tipografia#parrafos" },
@@ -65,7 +77,7 @@ const componentCategories: ComponentCategory[] = [
     },
 ]
 
-export function SidebarNav() {
+export function SidebarNav({ setBreadcrumbItems }: { setBreadcrumbItems: React.Dispatch<React.SetStateAction<{ title: string; description: string; href: string }[]>> }) {
     const navigate = useNavigate()
     const { pathname } = useLocation()
     const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>(() => {
@@ -99,10 +111,33 @@ export function SidebarNav() {
     }, [pathname])
 
     const toggleCategory = (href: string) => {
+        // Si hay otras categorías abiertas, cerrarlas
+        Object.keys(expandedCategories).forEach((key) => {
+            if (key !== href) {
+                expandedCategories[key] = false
+            }
+        })
+        // Si la categoría ya está expandida, solo navegamos
+        if (expandedCategories[href]) {
+            navigate(href)
+            return
+        }
+        // Si no está expandida, navegamos y la expandimos
+        navigate(href)
+        // Alternar la categoría expandida
         setExpandedCategories((prev) => ({
             ...prev,
             [href]: !prev[href],
         }))
+        const breadcrumbItem = componentCategories.find((category) => category.href === href);
+        // Actualizar breadcrumbItems
+        if (breadcrumbItem) {
+            setBreadcrumbItems([{
+                title: breadcrumbItem.title,
+                description: breadcrumbItem.description || "",
+                href: breadcrumbItem.href,
+            }])
+        }
     }
 
     // Función para hacer scroll al componente
@@ -136,6 +171,15 @@ export function SidebarNav() {
         const hash = href.split("#")[1]
         if (!hash) return
 
+        // actualizar el breadcrumbItems
+        const breadcrumbItem = componentCategories.find((category) => category.href === pathname)
+        if (breadcrumbItem) {
+            setBreadcrumbItems([{
+                title: breadcrumbItem.title,
+                description: breadcrumbItem.description || "",
+                href: breadcrumbItem.href,
+            }])
+        }
         // Si estamos en la misma página, solo hacemos scroll
         if (pathname === href.split("#")[0]) {
             scrollToComponent(hash)
@@ -146,6 +190,14 @@ export function SidebarNav() {
             navigate(href)
         }
     }
+
+    useEffect(() => {
+        // Añadir el efecto de resaltado a los componentes al cargar la página
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        })
+    }, [pathname])
 
     return (
         <div className="w-full">
@@ -188,11 +240,6 @@ export function SidebarNav() {
                                                 const itemHash = item.href.split("#")[1]
                                                 const itemIsActive = pathname === itemHref && window.location.hash === `#${itemHash}`
 
-                                                console.log("🚀 > window.location.hash:", window.location.hash)
-                                                console.log("🚀 > itemHash:", itemHash)
-                                                console.log("🚀 > itemHref:", itemHref)
-                                                console.log("🚀 > {category.items.map > pathname:", pathname)
-                                                console.log("🚀 > {category.items.map > itemIsActive:", itemIsActive)
                                                 return (
                                                     <a
                                                         key={item.href}

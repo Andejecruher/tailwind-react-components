@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom"
 import RootLayout from "@src/components/layout/layout"
 import ComponentLayout from "@src/components/layout/component-layout"
 import NotFound from "@src/pages/not-found"
+import DocumentationPage from "@src/pages/Documentation"
+import AboutMePage from "@src/pages/AboutMe"
 import Home from "@src/pages/Home"
 import ButtonsPage from "@src/pages/Buttons"
 import CardsPage from "@src/pages/Cards"
@@ -16,7 +18,8 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
         children: [
             { index: true, element: <Home /> },
-
+            { path: "sobre-mi", element: <AboutMePage /> },
+            { path: "docs", element: <DocumentationPage /> },
             // Agrupamos rutas con ComponentLayout aquí
             {
                 element: <ComponentLayout />,
