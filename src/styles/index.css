@@ -3,6 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --font-family-dancing-script: "Dancing Script", cursive;
+
   --color-background: 0 0% 100%;
   --color-foreground: 240 10% 3.9%;
   --color-card: 0 0% 100%;
@@ -225,4 +227,16 @@ pre ::selection {
 
 .dark .highlight-component::before {
   background: linear-gradient(to right, #8b5cf6, #4f46e5) border-box;
+}
+
+.andejecruher {
+  display: block;
+  width: 100%;
+  height: 400px;
+  -webkit-mask-image: url("./mask-image.png");
+  mask-image: url("./mask-image.png");
+  -webkit-mask-position: center center;
+  mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }

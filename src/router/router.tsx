@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom"
 import RootLayout from "@src/components/layout/layout"
 import ComponentLayout from "@src/components/layout/component-layout"
 import NotFound from "@src/pages/not-found"
-import DocumentationPage from "@src/pages/Documentation"
+import UnderConstructionPage from "@src/pages/UnderConstruction"
+// import DocumentationPage from "@src/pages/Documentation"
 import AboutMePage from "@src/pages/AboutMe"
 import Home from "@src/pages/Home"
 import ButtonsPage from "@src/pages/Buttons"
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <Home /> },
             { path: "sobre-mi", element: <AboutMePage /> },
-            { path: "docs", element: <DocumentationPage /> },
+            { path: "docs", element: <UnderConstructionPage /> },
             // Agrupamos rutas con ComponentLayout aquí
             {
                 element: <ComponentLayout />,

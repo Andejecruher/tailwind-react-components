@@ -1,9 +1,11 @@
+"use client"
+
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { ArrowLeft, Book, Code } from "lucide-react"
 import { useState } from "react"
 
-export default function DocumentationPage() {
+export default function DocumentacionPage() {
     const [activeCategory, setActiveCategory] = useState<string | null>("getting-started")
 
     const categories = [
@@ -37,26 +39,28 @@ export default function DocumentationPage() {
     }
 
     return (
-        <div className="min-h-screen bg-[#1e2124] text-gray-100">
+        <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
             {/* Hero Section */}
-            <div className="relative overflow-hidden bg-[#1a1d20]">
+            <div className="relative overflow-hidden bg-white dark:bg-gray-900">
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1d20] via-[#1a1d20] to-[#1e2124] opacity-90"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50 opacity-90 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950"></div>
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMxZTIxMjQiIGZpbGwtb3BhY2l0eT0iLjIiIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAwIi8+PC9nPjwvc3ZnPg==')] opacity-5"></div>
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 py-24 text-center">
                     <Link
                         to="/"
-                        className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#1e2124]/50 px-4 py-2 text-sm text-gray-300 backdrop-blur-sm transition-colors hover:bg-[#1e2124]/80 hover:text-white"
+                        className="mb-8 inline-flex items-center gap-2 rounded-full bg-gray-100/50 px-4 py-2 text-sm text-gray-600 backdrop-blur-sm transition-colors hover:bg-gray-200/80 hover:text-gray-900 dark:bg-gray-800/50 dark:text-gray-300 dark:hover:bg-gray-700/80 dark:hover:text-white"
                     >
                         <ArrowLeft className="h-4 w-4" />
                         Volver al inicio
                     </Link>
 
                     <motion.div initial="hidden" animate="visible" variants={fadeInUp} transition={{ duration: 0.5 }}>
-                        <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">Documentación</h1>
-                        <p className="mx-auto max-w-2xl text-lg text-gray-300">
+                        <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+                            Documentación
+                        </h1>
+                        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
                             Guías completas y recursos para ayudarte a construir con nuestros componentes.
                         </p>
                     </motion.div>
@@ -69,19 +73,19 @@ export default function DocumentationPage() {
                     {/* Sidebar */}
                     <div className="lg:col-span-1">
                         <div className="sticky top-24 space-y-6">
-                            <div className="rounded-xl bg-[#23272b] p-4 shadow-lg">
-                                <h3 className="mb-4 text-lg font-semibold text-[#d4b572]">Categorías</h3>
+                            <div className="rounded-xl bg-white p-4 shadow-lg dark:bg-gray-800">
+                                <h3 className="mb-4 text-lg font-semibold text-amber-600 dark:text-amber-500">Categorías</h3>
                                 <nav className="space-y-1">
                                     {categories.map((category) => (
                                         <button
                                             key={category.id}
                                             onClick={() => setActiveCategory(category.id)}
                                             className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors ${activeCategory === category.id
-                                                ? "bg-[#2a2f34] text-[#d4b572]"
-                                                : "text-gray-300 hover:bg-[#2a2f34] hover:text-[#d4b572]"
+                                                ? "bg-gray-100 text-amber-600 dark:bg-gray-700 dark:text-amber-500"
+                                                : "text-gray-600 hover:bg-gray-100 hover:text-amber-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-amber-500"
                                                 }`}
                                         >
-                                            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#1e2124]">
+                                            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gray-50 dark:bg-gray-900">
                                                 {category.icon}
                                             </span>
                                             {category.title}
@@ -96,16 +100,16 @@ export default function DocumentationPage() {
                     <div className="lg:col-span-3">
                         {categories.map((category) => (
                             <div key={category.id} className={`space-y-8 ${activeCategory === category.id ? "block" : "hidden"}`}>
-                                <div className="rounded-xl border border-[#2a2f34] bg-[#23272b] p-6 shadow-lg">
-                                    <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-white">
-                                        <span className="flex h-8 w-8 items-center justify-center rounded-md bg-[#1e2124]">
+                                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+                                    <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
+                                        <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gray-50 dark:bg-gray-900">
                                             {category.icon}
                                         </span>
                                         {category.title}
                                     </h2>
 
-                                    <div className="prose prose-invert max-w-none">
-                                        <p className="text-gray-300">
+                                    <div className="prose prose-gray max-w-none dark:prose-invert">
+                                        <p className="text-gray-600 dark:text-gray-300">
                                             Explora nuestra documentación detallada sobre {category.title.toLowerCase()} para aprender cómo
                                             integrar y utilizar nuestros componentes de manera efectiva en tus proyectos.
                                         </p>
@@ -120,17 +124,17 @@ export default function DocumentationPage() {
                                             animate="visible"
                                             variants={fadeInUp}
                                             transition={{ duration: 0.3 }}
-                                            className="group rounded-xl border border-[#2a2f34] bg-[#23272b] p-6 shadow-lg transition-all hover:border-[#d4b572]/30 hover:shadow-xl"
+                                            className="group rounded-xl border border-gray-200 bg-white p-6 shadow-lg transition-all hover:border-amber-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800 dark:hover:border-amber-600/30"
                                         >
-                                            <h3 className="mb-2 text-lg font-semibold text-white group-hover:text-[#d4b572]">
+                                            <h3 className="mb-2 text-lg font-semibold text-gray-900 group-hover:text-amber-600 dark:text-white dark:group-hover:text-amber-500">
                                                 {article.title}
                                             </h3>
-                                            <p className="mb-4 text-sm text-gray-400">
+                                            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
                                                 Guía detallada sobre {article.title.toLowerCase()} y su implementación.
                                             </p>
                                             <Link
                                                 to={`/documentacion/${category.id}/${article.slug}`}
-                                                className="inline-flex items-center text-sm font-medium text-[#d4b572] transition-colors hover:text-[#e5c989]"
+                                                className="inline-flex items-center text-sm font-medium text-amber-600 transition-colors hover:text-amber-700 dark:text-amber-500 dark:hover:text-amber-400"
                                             >
                                                 Leer más
                                                 <svg
@@ -154,22 +158,24 @@ export default function DocumentationPage() {
 
             {/* Simple Getting Started Guide */}
             <div className="container mx-auto px-4 py-16">
-                <div className="mx-auto max-w-3xl rounded-xl border border-[#2a2f34] bg-[#23272b] p-8 shadow-lg">
-                    <h2 className="mb-6 text-2xl font-bold text-white">Guía Rápida de Inicio</h2>
+                <div className="mx-auto max-w-3xl rounded-xl border border-gray-200 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+                    <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">Guía Rápida de Inicio</h2>
 
-                    <div className="prose prose-invert max-w-none">
-                        <h3 className="text-xl font-semibold text-[#d4b572]">Instalación</h3>
-                        <p>Para comenzar a utilizar nuestra biblioteca de componentes, instala el paquete usando npm:</p>
+                    <div className="prose prose-gray max-w-none dark:prose-invert">
+                        <h3 className="text-xl font-semibold text-amber-600 dark:text-amber-500">Instalación</h3>
+                        <p className="text-gray-600 dark:text-gray-300">
+                            Para comenzar a utilizar nuestra biblioteca de componentes, instala el paquete usando npm:
+                        </p>
 
-                        <div className="my-4 rounded-md bg-[#1e2124] p-4">
-                            <code className="text-[#e5c989]">npm install @andejecruher/component-gallery</code>
+                        <div className="my-4 rounded-md bg-gray-50 p-4 dark:bg-gray-900">
+                            <code className="text-amber-600 dark:text-amber-500">npm install @andejecruher/component-gallery</code>
                         </div>
 
-                        <h3 className="mt-8 text-xl font-semibold text-[#d4b572]">Uso Básico</h3>
-                        <p>Importa los componentes que necesites en tu aplicación:</p>
+                        <h3 className="mt-8 text-xl font-semibold text-amber-600 dark:text-amber-500">Uso Básico</h3>
+                        <p className="text-gray-600 dark:text-gray-300">Importa los componentes que necesites en tu aplicación:</p>
 
-                        <div className="my-4 rounded-md bg-[#1e2124] p-4">
-                            <code className="text-[#e5c989]">
+                        <div className="my-4 rounded-md bg-gray-50 p-4 dark:bg-gray-900">
+                            <code className="text-gray-700 dark:text-gray-300">
                                 import {"{"} Button {"}"} from '@andejecruher/component-gallery';
                                 <br />
                                 <br />
@@ -184,7 +190,7 @@ export default function DocumentationPage() {
                             </code>
                         </div>
 
-                        <p className="mt-6">
+                        <p className="mt-6 text-gray-600 dark:text-gray-300">
                             Para obtener información más detallada sobre cada componente y sus opciones de configuración, consulta las
                             secciones específicas en la documentación.
                         </p>

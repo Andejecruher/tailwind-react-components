@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Github, Linkedin, Mail, Twitter } from "lucide-react";
-import Andejecruher from "@src/assets/images/andejecruher.png";
+import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
+import { ArrowLeft, Github, Linkedin, Mail, Twitter } from "lucide-react"
+import Andejecruher from "@src/assets/images/andejecruher.png"
 
 export default function AboutMePage() {
     const skills = [
@@ -30,7 +30,7 @@ export default function AboutMePage() {
         },
         {
             title: "Developer Full Stack",
-            company: "CreativeLab",
+            company: "Hoteles Buena Ventura",
             period: "abr. 2023 - jun. 2023",
             description:
                 "Desarrollo de sitios web y aplicaciones utilizando Laravel y Vue.js. Implementación de soluciones personalizadas para clientes.",
@@ -47,40 +47,35 @@ export default function AboutMePage() {
     const fadeInUp = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
-    };
+    }
 
     return (
-        <div className="min-h-screen bg-[#1e2124] text-gray-100">
+        <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
             {/* Hero Section */}
-            <div className="relative overflow-hidden bg-[#1a1d20]">
+            <div className="relative overflow-hidden bg-white dark:bg-gray-900">
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1d20] via-[#1a1d20] to-[#1e2124] opacity-90"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50 opacity-90 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950"></div>
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMxZTIxMjQiIGZpbGwtb3BhY2l0eT0iLjIiIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAwIi8+PC9nPjwvc3ZnPg==')] opacity-5"></div>
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 py-24">
                     <Link
                         to="/"
-                        className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#1e2124]/50 px-4 py-2 text-sm text-gray-300 backdrop-blur-sm transition-colors hover:bg-[#1e2124]/80 hover:text-white"
+                        className="mb-8 inline-flex items-center gap-2 rounded-full bg-gray-100/50 px-4 py-2 text-sm text-gray-600 backdrop-blur-sm transition-colors hover:bg-gray-200/80 hover:text-gray-900 dark:bg-gray-800/50 dark:text-gray-300 dark:hover:bg-gray-700/80 dark:hover:text-white"
                     >
                         <ArrowLeft className="h-4 w-4" />
                         Volver al inicio
                     </Link>
 
                     <div className="grid items-center gap-12 lg:grid-cols-2">
-                        <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            variants={fadeInUp}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                        <motion.div initial="hidden" animate="visible" variants={fadeInUp} transition={{ duration: 0.5 }}>
+                            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
                                 Antonio De Jesús <br />
-                                <span className="text-[#d4b572]">Cruz Hernández</span>
+                                <span className="text-amber-600 dark:text-amber-500">Cruz Hernández</span>
                             </h1>
-                            <p className="mb-8 max-w-2xl text-lg text-gray-300">
-                                Desarrollador Full Stack especializado en crear experiencias
-                                digitales excepcionales con tecnologías web modernas.
+                            <p className="mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+                                Desarrollador Full Stack especializado en crear experiencias digitales excepcionales con tecnologías web
+                                modernas.
                             </p>
                             <div className="flex flex-wrap gap-4">
                                 <a
@@ -127,18 +122,18 @@ export default function AboutMePage() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="mx-auto aspect-square w-full max-w-md"
                         >
-                            <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-[#d4b572] bg-[#23272b] p-2">
-                                <div className="absolute inset-0 flex items-center justify-center rounded-full bg-[#1e2124]">
+                            <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-amber-600 bg-gray-100 p-2 dark:border-amber-500 dark:bg-gray-800">
+                                <div className="absolute inset-0 flex items-center justify-center rounded-full bg-white dark:bg-gray-900">
                                     <div className="text-center">
-                                        <div className="text-[8rem] font-bold text-[#d4b572]">
+                                        <div className="text-[8rem] font-bold text-amber-600 dark:text-amber-500">
                                             <img
                                                 src={Andejecruher}
                                                 alt="andejecruher"
-                                                className="h-full w-full rounded-full object-cover"
+                                                className="andejecruher"
                                             />
                                         </div>
-                                        <div className="mt-4 text-sm font-medium uppercase tracking-widest text-gray-400">
-                                            andejecruher
+                                        <div className="-mt-4 text-2xl font-family-dancing-script font-bold tracking-widest text-gray-500 dark:text-gray-400">
+                                            Andejecruher
                                         </div>
                                     </div>
                                 </div>
@@ -157,17 +152,23 @@ export default function AboutMePage() {
                         viewport={{ once: true }}
                         variants={fadeInUp}
                         transition={{ duration: 0.5 }}
-                        className="mb-16 rounded-xl border border-[#2a2f34] bg-[#23272b] p-8 shadow-lg"
+                        className="mb-16 rounded-xl border border-gray-200 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-800"
                     >
-                        <h2 className="mb-6 text-3xl font-bold text-white">Sobre Mí</h2>
-                        <div className="space-y-4 text-gray-300">
+                        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Sobre Mí</h2>
+                        <div className="space-y-4 text-gray-600 dark:text-gray-300">
                             <p>
-                                Soy un apasionado desarrollador de software con un interés
-                                especial en el desarrollo web, aprendizaje automático y
-                                tecnologías emergentes. Mi objetivo es crear soluciones
-                                innovadoras que aborden desafíos del mundo real y compartirlas
-                                con la comunidad para fomentar el crecimiento y el conocimiento
-                                mutuo.
+                                Soy un desarrollador Full Stack con más de 6 años de experiencia en el desarrollo de aplicaciones web y
+                                móviles. Me especializo en tecnologías modernas como React, Next.js, Node.js y bases de datos SQL y
+                                NoSQL.
+                            </p>
+                            <p>
+                                Mi pasión es crear soluciones digitales que combinen un diseño atractivo con una funcionalidad robusta.
+                                Me enfoco en escribir código limpio, mantenible y escalable, siguiendo las mejores prácticas de la
+                                industria.
+                            </p>
+                            <p>
+                                Además de programar, disfruto compartiendo conocimientos a través de artículos técnicos, contribuyendo a
+                                proyectos de código abierto y participando en comunidades de desarrollo.
                             </p>
                         </div>
                     </motion.div>
@@ -181,26 +182,24 @@ export default function AboutMePage() {
                         transition={{ duration: 0.5 }}
                         className="mb-16"
                     >
-                        <h2 className="mb-6 text-3xl font-bold text-white">Habilidades</h2>
+                        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Habilidades</h2>
                         <div className="grid gap-6 sm:grid-cols-2">
                             {skills.map((skill, index) => (
                                 <div
                                     key={index}
-                                    className="rounded-lg border border-[#2a2f34] bg-[#23272b] p-4 shadow-lg"
+                                    className="rounded-lg border border-gray-200 bg-white p-4 shadow-lg dark:border-gray-700 dark:bg-gray-800"
                                 >
                                     <div className="mb-2 flex items-center justify-between">
-                                        <span className="font-medium text-white">{skill.name}</span>
-                                        <span className="text-sm text-[#d4b572]">
-                                            {skill.level}%
-                                        </span>
+                                        <span className="font-medium text-gray-900 dark:text-white">{skill.name}</span>
+                                        <span className="text-sm text-amber-600 dark:text-amber-500">{skill.level}%</span>
                                     </div>
-                                    <div className="h-2 w-full overflow-hidden rounded-full bg-[#1e2124]">
+                                    <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-gray-700">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             whileInView={{ width: `${skill.level}%` }}
                                             viewport={{ once: true }}
                                             transition={{ duration: 1, delay: 0.2 }}
-                                            className="h-full rounded-full bg-gradient-to-r from-[#d4b572] to-[#e5c989]"
+                                            className="h-full rounded-full bg-gradient-to-r from-amber-600 to-amber-400 dark:from-amber-500 dark:to-amber-400"
                                         ></motion.div>
                                     </div>
                                 </div>
@@ -217,21 +216,19 @@ export default function AboutMePage() {
                         transition={{ duration: 0.5 }}
                         className="mb-16"
                     >
-                        <h2 className="mb-6 text-3xl font-bold text-white">Experiencia</h2>
+                        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">Experiencia</h2>
                         <div className="space-y-6">
                             {experiences.map((exp, index) => (
                                 <div
                                     key={index}
-                                    className="rounded-lg border border-[#2a2f34] bg-[#23272b] p-6 shadow-lg"
+                                    className="rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-gray-700 dark:bg-gray-800"
                                 >
-                                    <h3 className="mb-1 text-xl font-semibold text-white">
-                                        {exp.title}
-                                    </h3>
+                                    <h3 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">{exp.title}</h3>
                                     <div className="mb-3 flex items-center justify-between">
-                                        <span className="text-[#d4b572]">{exp.company}</span>
-                                        <span className="text-sm text-gray-400">{exp.period}</span>
+                                        <span className="text-amber-600 dark:text-amber-500">{exp.company}</span>
+                                        <span className="text-sm text-gray-500 dark:text-gray-400">{exp.period}</span>
                                     </div>
-                                    <p className="text-gray-300">{exp.description}</p>
+                                    <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -240,20 +237,17 @@ export default function AboutMePage() {
             </div>
 
             {/* Contact Section */}
-            <div className="border-t border-[#2a2f34] bg-[#1a1d20]">
+            <div className="border-t border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
                 <div className="container mx-auto px-4 py-16">
-                    <div className="mx-auto max-w-3xl rounded-2xl bg-gradient-to-br from-[#23272b] to-[#1e2124] p-8 shadow-lg">
+                    <div className="mx-auto max-w-3xl rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-8 shadow-lg dark:from-gray-800 dark:to-gray-900">
                         <div className="text-center">
-                            <h2 className="mb-2 text-2xl font-bold text-white">
-                                ¿Interesado en trabajar juntos?
-                            </h2>
-                            <p className="mb-6 text-gray-300">
-                                Estoy abierto a nuevas oportunidades y colaboraciones.
-                                ¡Contáctame!
+                            <h2 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">¿Interesado en trabajar juntos?</h2>
+                            <p className="mb-6 text-gray-600 dark:text-gray-300">
+                                Estoy abierto a nuevas oportunidades y colaboraciones. ¡Contáctame!
                             </p>
                             <a
                                 href="mailto:contacto@andejecruher.com"
-                                className="inline-flex items-center gap-2 rounded-lg bg-[#d4b572] px-6 py-3 font-medium text-[#1e2124] transition-colors hover:bg-[#e5c989]"
+                                className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-6 py-3 font-medium text-white transition-colors hover:bg-amber-700 dark:bg-amber-500 dark:text-gray-900 dark:hover:bg-amber-400"
                             >
                                 <Mail className="h-5 w-5" />
                                 Enviar mensaje
@@ -263,5 +257,5 @@ export default function AboutMePage() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
