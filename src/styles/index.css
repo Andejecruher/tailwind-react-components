@@ -59,6 +59,10 @@
   --color-chart-5: 240 3.7% 15.9%;
 }
 
+@utility clamp-img-card {
+  width: clamp(68px, 10vw, 80px);
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);

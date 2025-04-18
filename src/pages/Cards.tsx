@@ -3,14 +3,18 @@ import { ComponentPreview } from "@src/components/ui/component-preview"
 // Importing the components for the cards
 import { BasicCard } from "@src/components/cards/basic-card"
 import { ProductCard } from "@src/components/cards/product-card"
+import { CardUserTeam } from "@src/components/cards/card-user-team"
 
 // Importing the code for component preview
 import basicCardSource from "@src/components/cards/basic-card.tsx?raw"
 import productCardSource from "@src/components/cards/product-card.tsx?raw"
+import cardUserTeamSource from "@src/components/cards/card-user-team.tsx?raw"
 
 export default function CardsPage() {
   return (
     <div className="grid gap-8">
+
+      {/* Card Basic */}
       <ComponentPreview
         id="basica"
         title="Tarjeta Básica"
@@ -35,6 +39,7 @@ export default function CardsPage() {
         sourceCode={basicCardSource} // Pass the source code as a prop
       />
 
+      {/* Card Producto */}
       <ComponentPreview
         id="producto"
         title="Tarjeta de Producto"
@@ -62,6 +67,21 @@ export default function CardsPage() {
         }}
         sourceCode={productCardSource} // Pass the source code as a prop
       />
+
+      {/* Card Usuario y Equipo */}
+      <ComponentPreview
+        id="userteam"
+        title="Tarjeta de Usuario y Equipo"
+        description="Tarjeta para mostrar información de un usuario y su equipo."
+        component={
+          <CardUserTeam />
+        }
+        componentName="CardUserTeam"
+        componentProps={{}}
+        sourceCode={cardUserTeamSource}
+      />
+
+
     </div>
   )
 }
