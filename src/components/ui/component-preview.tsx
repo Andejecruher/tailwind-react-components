@@ -21,6 +21,18 @@ interface ComponentCodePreviewProps {
     resizable?: boolean
 }
 
+// Definimos los breakpoints estándar de Tailwind CSS
+const TAILWIND_BREAKPOINTS = {
+    xs: 0,
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    "2xl": 1536,
+}
+
+type BreakpointKey = keyof typeof TAILWIND_BREAKPOINTS
+
 export function ComponentPreview({
     title,
     description,
@@ -35,7 +47,7 @@ export function ComponentPreview({
 }: ComponentCodePreviewProps) {
     const [activeTab, setActiveTab] = useState<"preview" | "code" | "source">("preview")
     const usageCode = code || formatComponentCode(componentName, componentProps)
-
+    const [activeBreakpoint, setActiveBreakpoint] = useState<BreakpointKey | null>(null)
     const [previewWidth, setPreviewWidth] = useState<number>(0)
     const [isDragging, setIsDragging] = useState<boolean>(false)
     const [maxWidth, setMaxWidth] = useState<number>(0)
@@ -50,6 +62,22 @@ export function ComponentPreview({
             if (previewWidth === 0 || previewWidth > containerWidth) {
                 setPreviewWidth(containerWidth)
             }
+        }
+    }, [previewWidth])
+
+    // Determinar el breakpoint activo basado en el ancho actual
+    useEffect(() => {
+        const determineBreakpoint = () => {
+            const breakpointEntries = Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]
+            // Ordenamos de mayor a menor para encontrar el breakpoint más grande que sea menor o igual al ancho actual
+            const sortedBreakpoints = [...breakpointEntries].sort((a, b) => b[1] - a[1])
+
+            const currentBreakpoint = sortedBreakpoints.find(([, width]) => previewWidth >= width)?.[0] || "xs"
+            setActiveBreakpoint(currentBreakpoint as BreakpointKey)
+        }
+
+        if (previewWidth > 0) {
+            determineBreakpoint()
         }
     }, [previewWidth])
 
@@ -195,7 +223,7 @@ export function ComponentPreview({
                                             boxShadow: isDragging ? "0 0 0 2px rgba(99, 102, 241, 0.4)" : "none",
                                         }}
                                     >
-                                        <div className="w-full">{component}</div>
+                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center">{component}</div>
                                     </div>
                                 </div>
 
