@@ -44,7 +44,7 @@ export default function CardsPage() {
             title="Nombre del Producto"
             price="$99.99"
             description="Descripción detallada del producto."
-            imageUrl="https://via.placeholder.com/150"
+            imageUrl="https://placehold.co/150"
             onViewDetails={() => alert("Ver detalles")}
             onBuyNow={() => alert("Comprar ahora")}
           />
@@ -54,7 +54,7 @@ export default function CardsPage() {
           title: "Nombre del Producto",
           price: "$99.99",
           description: "Descripción detallada del producto.",
-          imageUrl: "https://via.placeholder.com/250",
+          imageUrl: "https://placehold.co/250",
           onViewDetails: () => alert("Ver detalles"),
           onBuyNow: () => alert("Comprar ahora"),
           labelActionViewDetails: "Ver detalles",
