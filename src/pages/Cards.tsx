@@ -10,6 +10,9 @@ import basicCardSource from "@src/components/cards/basic-card.tsx?raw"
 import productCardSource from "@src/components/cards/product-card.tsx?raw"
 import cardUserTeamSource from "@src/components/cards/card-user-team.tsx?raw"
 
+// import assets for the components
+import logoGoogle from "@src/assets/logos/google.png";
+
 export default function CardsPage() {
   return (
     <div className="grid gap-8">
@@ -70,14 +73,38 @@ export default function CardsPage() {
 
       {/* Card Usuario y Equipo */}
       <ComponentPreview
-        id="userteam"
+        id="usuario"
         title="Tarjeta de Usuario y Equipo"
         description="Tarjeta para mostrar información de un usuario y su equipo."
         component={
-          <CardUserTeam />
+          <CardUserTeam
+            companyName="Google"
+            companyLogo={logoGoogle}
+            positionLevel="Senior"
+            positionTitle="Visual Designer"
+            location="London, UK"
+            isRemote={true}
+            salary="35k"
+            postedAgo="2 weeks ago"
+            matchPercentage={54}
+            avatarUrl="https://avatar.iran.liara.run/public/boy"
+            onShare={() => alert("Compartido 🚀")}
+            onBookmark={() => alert("Guardado 🔖")}
+          />
         }
         componentName="CardUserTeam"
-        componentProps={{}}
+        componentProps={{
+          companyName: "Google",
+          companyLogo: "/assets/logos/google.png",
+          positionLevel: "Senior",
+          positionTitle: "Visual Designer",
+          location: "London, UK",
+          isRemote: true,
+          salary: "35k",
+          postedAgo: "2 weeks ago",
+          matchPercentage: 54,
+          avatarUrl: "https://avatar.iran.liara.run/public/boy"
+        }}
         sourceCode={cardUserTeamSource}
       />
 

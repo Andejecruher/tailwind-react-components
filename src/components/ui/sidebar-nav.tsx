@@ -42,6 +42,7 @@ const componentCategories: ComponentCategory[] = [
         items: [
             { title: "Tarjeta Básica", href: "/tarjetas#basica" },
             { title: "Tarjeta de Producto", href: "/tarjetas#producto" },
+            { title: "Tarjeta de Usuario", href: "/tarjetas#usuario" },
         ],
     },
     {
