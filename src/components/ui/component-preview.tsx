@@ -177,7 +177,7 @@ export function ComponentPreview({
                     {activeTab === "preview" ? (
                         <div ref={containerRef} className="relative">
                             {resizable && activeTab === "preview" && (
-                                <div className="mb-4 flex items-center justify-between">
+                                <div className="mb-4 flex items-center justify-between overflow-x-auto">
                                     <div className="flex items-center space-x-2">
                                         <BreakpointButton
                                             onClick={() => setBreakpoint(320)}
