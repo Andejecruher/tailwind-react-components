@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import type React from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
@@ -99,7 +100,7 @@ export function SidebarNav({ setBreadcrumbItems }: { setBreadcrumbItems: React.D
                 [currentCategory.href]: true,
             }))
         }
-    }, [pathname])
+    }, [pathname, setBreadcrumbItems])
 
     // Manejar el scroll al componente cuando se carga la página con un hash
     useEffect(() => {
@@ -192,11 +193,21 @@ export function SidebarNav({ setBreadcrumbItems }: { setBreadcrumbItems: React.D
     }
 
     useEffect(() => {
-        // Añadir el efecto de resaltado a los componentes al cargar la página
+        // Añadir el efecto de resaltado a los componentes al cargar la página        
         window.scrollTo({
             top: 0,
             behavior: "smooth",
         })
+
+        // Setear el breadcrumbItems al cargar la página
+        const breadcrumbItem = componentCategories.find((category) => pathname.startsWith(category.href))
+        if (breadcrumbItem) {
+            setBreadcrumbItems([{
+                title: breadcrumbItem.title,
+                description: breadcrumbItem.description || "",
+                href: breadcrumbItem.href,
+            }])
+        }
     }, [pathname])
 
     return (

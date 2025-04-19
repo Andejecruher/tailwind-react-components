@@ -23,7 +23,7 @@ interface ComponentCodePreviewProps {
 
 // Definimos los breakpoints estándar de Tailwind CSS
 const TAILWIND_BREAKPOINTS = {
-    xs: 0,
+    xs: 320,
     sm: 640,
     md: 768,
     lg: 1024,
@@ -128,6 +128,9 @@ export function ComponentPreview({
 
     const setBreakpoint = (width: number) => {
         setPreviewWidth(Math.min(width, maxWidth))
+        setActiveBreakpoint(
+            (Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]).find(([, w]) => w === width)?.[0] || null,
+        )
     }
 
     return (
@@ -174,6 +177,12 @@ export function ComponentPreview({
                             {resizable && activeTab === "preview" && (
                                 <div className="mb-4 flex items-center justify-between">
                                     <div className="flex items-center space-x-2">
+                                        <BreakpointButton
+                                            onClick={() => setBreakpoint(320)}
+                                            icon={<Smartphone className="h-4 w-4" />}
+                                            label="320px"
+                                            isActive={previewWidth === 320}
+                                        />
                                         <BreakpointButton
                                             onClick={() => setBreakpoint(375)}
                                             icon={<Smartphone className="h-4 w-4" />}
@@ -223,7 +232,9 @@ export function ComponentPreview({
                                             boxShadow: isDragging ? "0 0 0 2px rgba(99, 102, 241, 0.4)" : "none",
                                         }}
                                     >
-                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center">{component}</div>
+                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center">
+                                            {component}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -326,7 +337,7 @@ function BreakpointButton({ onClick, icon, label, isActive }: BreakpointButtonPr
     return (
         <button
             onClick={onClick}
-            className={`group flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${isActive
+            className={`group cursor-pointer flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${isActive
                 ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                 }`}
