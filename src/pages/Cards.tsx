@@ -5,7 +5,7 @@ import { BasicCard } from "@src/components/cards/basic-card"
 import { ProductCard } from "@src/components/cards/product-card"
 import { CardUserTeam } from "@src/components/cards/card-user-team"
 
-// Importing the code for component preview
+// // Importing the code for component preview
 import basicCardSource from "@src/components/cards/basic-card.tsx?raw"
 import productCardSource from "@src/components/cards/product-card.tsx?raw"
 import cardUserTeamSource from "@src/components/cards/card-user-team.tsx?raw"

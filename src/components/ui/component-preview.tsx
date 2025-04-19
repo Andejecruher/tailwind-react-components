@@ -6,7 +6,8 @@ import { CodeIcon, EyeIcon, FileCodeIcon, Smartphone, Tablet, Monitor, Maximize2
 import { formatComponentCode } from "@src/lib/utils"
 import { motion } from "framer-motion"
 import { CodeHighlighter } from "@src/components/ui/code-highlighter"
-
+// import { ClassModifier } from "@src/components/ui/class-modifier"
+import { useTransformTailwindClasses } from "@src/hooks/useTransformTailwindClasses";
 
 interface ComponentCodePreviewProps {
     title: string
@@ -45,6 +46,7 @@ export function ComponentPreview({
     code,
     resizable = true,
 }: ComponentCodePreviewProps) {
+    useTransformTailwindClasses(`${id}-preview`);
     const [activeTab, setActiveTab] = useState<"preview" | "code" | "source">("preview")
     const usageCode = code || formatComponentCode(componentName, componentProps)
     const [activeBreakpoint, setActiveBreakpoint] = useState<BreakpointKey | null>(null)
@@ -225,14 +227,14 @@ export function ComponentPreview({
                                 <div className="relative flex justify-center w-full">
                                     <div
                                         ref={previewRef}
-                                        className="relative z-10 flex min-h-[200px] items-center justify-center p-8 transition-all duration-200"
+                                        className="@container relative z-10 flex items-center justify-center p-8 transition-all duration-200"
                                         style={{
                                             width: resizable && activeTab === "preview" ? `${previewWidth}px` : "100%",
-                                            maxWidth: "100%",
+                                            maxWidth: `${previewWidth}px`,
                                             boxShadow: isDragging ? "0 0 0 2px rgba(99, 102, 241, 0.4)" : "none",
                                         }}
                                     >
-                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center">
+                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center" id={`${id}-preview`} >
                                             {component}
                                         </div>
                                     </div>
@@ -308,7 +310,7 @@ function TabButton({ active, onClick, icon, label }: TabButtonProps) {
     return (
         <button
             onClick={onClick}
-            className={`group relative inline-flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${active
+            className={`group cursor-pointer relative inline-flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${active
                 ? "text-gray-900 dark:text-white"
                 : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                 }`}
