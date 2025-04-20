@@ -5,12 +5,12 @@ import FlowersSvg from "@src/assets/logos/flowers.svg"
 
 export function SignUpFlowerBasic() {
     return (
-        <div className="card bg-white rounded-4xl w-[85%] md:w-2/3 max-w-[800px] pr-0 md:p-4 flex items-center flex-row md:flex-col shadow-mega text-black">
-            <div className="image relative rounded-3xl overflow-hidden self-stretch w-[45%] md:w-full h-auto md:h-[280px]">
-                <img src={FlowersImg} className="absolute w-full h-full md:h-[180%] aspect-[2/1] object-cover" />
+        <div className="card bg-white rounded-4xl md:w-[85%] w-2/3 max-w-[800px] pr-0 md:p-4 flex md:items-center md:flex-row flex-col shadow-mega text-black">
+            <div className="image relative rounded-3xl overflow-hidden self-stretch md:w-[45%] w-full md:h-auto h-[280px]">
+                <img src={FlowersImg} className="absolute w-full md:h-full h-[180%] aspect-[2/1] object-cover" />
             </div>
-            <div className="content flex flex-col md:justify-center items-start md:items-center text-left flex-[1_1_50%] pt-0 px-8 pb-5 md:pt-0 md:px-5 md:pb-5">
-                <img src={FlowersSvg} className="h-6 mt-16 md:mt-12 mb-2.5" />
+            <div className="content flex flex-col justify-center md:items-start items-center text-left flex-[1_1_50%] md:pt-0 md:px-8 md:pb-5 pt-0 px-5 pb-5">
+                <img src={FlowersSvg} className="h-6 md:mt-16 mt-12 mb-2.5" />
                 <h2 className="font-normal text-base mt-0 mx-0 mb-10 text-muted">Create an account</h2>
                 <form className="form grid gap-3 w-full">
                     <div className="textbox relative">
@@ -28,7 +28,7 @@ export function SignUpFlowerBasic() {
                         </span>
                     </button>
                 </form>
-                <p>Already have an account? <a className="text-purple-600">Sign In</a></p>
+                <p className="mt-2.5 text-muted">Already have an account? <a className="text-purple-600 font-semibold">Sign In</a></p>
             </div>
         </div>
     )
