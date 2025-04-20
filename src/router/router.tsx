@@ -11,6 +11,7 @@ import CardsPage from "@src/pages/Cards"
 import FormsPage from "@src/pages/Forms"
 import ModalsPage from "@src/pages/Modals"
 import TypographyPage from "@src/pages/Typography"
+import SignupPage from "@src/pages/Signup"
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
                     { path: "formularios", element: <FormsPage /> },
                     { path: "modales", element: <ModalsPage /> },
                     { path: "tipografia", element: <TypographyPage /> },
+                    { path: "inicios-de-sesion", element: <SignupPage /> },
                 ],
             },
         ],

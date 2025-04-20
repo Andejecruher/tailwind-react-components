@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { ChevronRight, Layers, Layout, Square, Type, Code } from "lucide-react"
+import { ChevronRight, Layers, Layout, Square, Type, Code, ScanEye } from "lucide-react"
 
 export default function Home() {
     const categories = [
@@ -33,6 +33,12 @@ export default function Home() {
             icon: <Type className="h-6 w-6" />,
             href: "/tipografia",
         },
+        {
+            title: "Inicios de Sesión",
+            description: "Componentes para facilitar el inicio de sesión de usuarios.",
+            icon: <ScanEye className="h-6 w-6" />,
+            href: "/inicios-de-sesion",
+        }
     ]
 
     return (

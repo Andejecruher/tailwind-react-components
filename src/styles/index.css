@@ -67,6 +67,10 @@
   font-size: clamp(14px, 3.5vw, 16px);
 }
 
+@utility shadow-mega {
+  box-shadow: 0 580px 100px rgba(104, 101, 248, 0.1);
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);

@@ -77,6 +77,15 @@ const componentCategories: ComponentCategory[] = [
             { title: "Listas", href: "/tipografia#listas" },
         ],
     },
+    {
+        title: "Inicios de Sesión",
+        href: "/inicios-de-sesion",
+        metaTitle: "Inicios de Sesión - Galería de Componentes",
+        description: "Descubre inicios de sesión estilizados y funcionales para tus aplicaciones.",
+        items: [
+            { title: "Inicio de Sesión Básico", href: "/inicios-de-sesion#signup-flower-basic" },
+        ],
+    },
 ]
 
 export function SidebarNav({ setBreadcrumbItems }: { setBreadcrumbItems: React.Dispatch<React.SetStateAction<{ title: string; description: string; href: string }[]>> }) {
