@@ -241,54 +241,6 @@ pre ::selection {
   background: linear-gradient(to right, #8b5cf6, #4f46e5) border-box;
 }
 
-/* Tailwind Preview Wrapper - Estilos para simular breakpoints */
-.tailwind-preview-wrapper {
-  width: 100%;
-}
-
-/* Estilos para simular los breakpoints de Tailwind */
-@media (min-width: 640px) {
-  .tailwind-preview-wrapper[data-breakpoint="sm"] .sm\:block,
-  .tailwind-preview-wrapper[data-breakpoint="md"] .sm\:block,
-  .tailwind-preview-wrapper[data-breakpoint="lg"] .sm\:block,
-  .tailwind- .sm\:block,
-  .tailwind-preview-wrapper[data-breakpoint="lg"] .sm\:block,
-  .tailwind-preview-wrapper[data-breakpoint="xl"] .sm\:block,
-  .tailwind-preview-wrapper[data-breakpoint="2xl"] .sm\:block {
-    display: block;
-  }
-}
-
-@media (min-width: 768px) {
-  .tailwind-preview-wrapper[data-breakpoint="md"] .md\:block,
-  .tailwind-preview-wrapper[data-breakpoint="lg"] .md\:block,
-  .tailwind-preview-wrapper[data-breakpoint="xl"] .md\:block,
-  .tailwind-preview-wrapper[data-breakpoint="2xl"] .md\:block {
-    display: block;
-  }
-}
-
-@media (min-width: 1024px) {
-  .tailwind-preview-wrapper[data-breakpoint="lg"] .lg\:block,
-  .tailwind-preview-wrapper[data-breakpoint="xl"] .lg\:block,
-  .tailwind-preview-wrapper[data-breakpoint="2xl"] .lg\:block {
-    display: block;
-  }
-}
-
-@media (min-width: 1280px) {
-  .tailwind-preview-wrapper[data-breakpoint="xl"] .xl\:block,
-  .tailwind-preview-wrapper[data-breakpoint="2xl"] .xl\:block {
-    display: block;
-  }
-}
-
-@media (min-width: 1536px) {
-  .tailwind-preview-wrapper[data-breakpoint="2xl"] .\32xl\:block {
-    display: block;
-  }
-}
-
 .andejecruher {
   display: block;
   width: 100%;
