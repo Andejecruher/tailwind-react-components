@@ -24,7 +24,7 @@ interface ComponentCodePreviewProps {
 
 // Definimos los breakpoints estándar de Tailwind CSS
 const TAILWIND_BREAKPOINTS = {
-    xs: 320,
+    xs: 0,
     sm: 640,
     md: 768,
     lg: 1024,
@@ -234,7 +234,13 @@ export function ComponentPreview({
                                             boxShadow: isDragging ? "0 0 0 2px rgba(99, 102, 241, 0.4)" : "none",
                                         }}
                                     >
-                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center" id={`${id}-preview`} >
+                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center" id={`${id}-preview`}
+                                            style={{
+                                                // Aplicamos un estilo personalizado para simular los breakpoints
+                                                // Esto permite que las clases responsive de Tailwind se activen
+                                                // basadas en el ancho del contenedor, no de la ventana
+                                                "--tw-current-width": `${previewWidth}px`,
+                                            }}>
                                             {component}
                                         </div>
                                     </div>
