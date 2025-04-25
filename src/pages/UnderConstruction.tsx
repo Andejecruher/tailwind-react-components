@@ -5,7 +5,7 @@ export default function UnderConstructionPage() {
         <UnderConstruction
             title="Sección en Desarrollo"
             description="Estamos trabajando arduamente para crear una experiencia excepcional. Esta sección estará disponible muy pronto con nuevas funcionalidades."
-            estimatedCompletion="Diciembre 2023"
+            estimatedCompletion="Diciembre 2024"
         />
     )
 }

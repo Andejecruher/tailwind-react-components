@@ -31,10 +31,10 @@ export function CodeHighlighter({
             <div className="sticky flex justify-end top-0 right-0 p-2 bg-gray-900/50 rounded-tl-lg rounded-tr-lg z-10">
                 <button
                     onClick={copyToClipboard}
-                    className="p-2 rounded-md bg-gray-800/50 hover:bg-gray-800/70 text-gray-300 transition-colors"
+                    className="p-2 rounded-md bg-gray-800/50 hover:bg-gray-800/70 text-gray-300 transition-colors cursor-pointer"
                     aria-label="Copy code"
                 >
-                    {copied ? <Check size={16} /> : <Copy size={16} />}
+                    {copied ? <Check size={16} className="text-green-600" /> : <Copy size={16} />}
                 </button>
             </div>
             <div className={cn("rounded-lg overflow-hidden", className)}>

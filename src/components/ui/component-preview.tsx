@@ -24,7 +24,7 @@ interface ComponentCodePreviewProps {
 
 // Definimos los breakpoints estándar de Tailwind CSS
 const TAILWIND_BREAKPOINTS = {
-    xs: 0,
+    xs: 320,
     sm: 640,
     md: 768,
     lg: 1024,
@@ -67,28 +67,6 @@ export function ComponentPreview({
         }
     }, [previewWidth])
 
-    // Determinar el breakpoint activo basado en el ancho actual
-    useEffect(() => {
-        const determineBreakpoint = () => {
-            const breakpointEntries = Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]
-            // Ordenamos de mayor a menor para encontrar el breakpoint más grande que sea menor o igual al ancho actual
-            const sortedBreakpoints = [...breakpointEntries].sort((a, b) => b[1] - a[1])
-
-            const currentBreakpoint = sortedBreakpoints.find(([, width]) => previewWidth >= width)?.[0] || "xs"
-            setActiveBreakpoint(currentBreakpoint as BreakpointKey)
-        }
-
-        if (previewWidth > 0) {
-            determineBreakpoint()
-        }
-    }, [previewWidth])
-
-    useEffect(() => {
-        updateMaxWidth()
-        window.addEventListener("resize", updateMaxWidth)
-        return () => window.removeEventListener("resize", updateMaxWidth)
-    }, [updateMaxWidth])
-
     const handleMouseDown = useCallback((e: React.MouseEvent) => {
         e.preventDefault()
         setIsDragging(true)
@@ -113,6 +91,34 @@ export function ComponentPreview({
         setIsDragging(false)
     }, [])
 
+    const setBreakpoint = (width: number) => {
+        setPreviewWidth(Math.min(width, maxWidth))
+        setActiveBreakpoint(
+            (Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]).find(([, w]) => w === width)?.[0] || null,
+        )
+    }
+    // Determinar el breakpoint activo basado en el ancho actual
+    useEffect(() => {
+        const determineBreakpoint = () => {
+            const breakpointEntries = Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]
+            // Ordenamos de mayor a menor para encontrar el breakpoint más grande que sea menor o igual al ancho actual
+            const sortedBreakpoints = [...breakpointEntries].sort((a, b) => b[1] - a[1])
+
+            const currentBreakpoint = sortedBreakpoints.find(([, width]) => previewWidth >= width)?.[0] || "xs"
+            setActiveBreakpoint(currentBreakpoint as BreakpointKey)
+        }
+
+        if (previewWidth > 0) {
+            determineBreakpoint()
+        }
+    }, [previewWidth])
+
+    useEffect(() => {
+        updateMaxWidth()
+        window.addEventListener("resize", updateMaxWidth)
+        return () => window.removeEventListener("resize", updateMaxWidth)
+    }, [updateMaxWidth])
+
     useEffect(() => {
         if (isDragging) {
             window.addEventListener("mousemove", handleMouseMove)
@@ -127,13 +133,6 @@ export function ComponentPreview({
             document.body.style.cursor = ""
         }
     }, [isDragging, handleMouseMove, handleMouseUp])
-
-    const setBreakpoint = (width: number) => {
-        setPreviewWidth(Math.min(width, maxWidth))
-        setActiveBreakpoint(
-            (Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]).find(([, w]) => w === width)?.[0] || null,
-        )
-    }
 
     return (
         <motion.div
@@ -227,22 +226,18 @@ export function ComponentPreview({
                                 <div className="relative flex justify-center w-full">
                                     <div
                                         ref={previewRef}
-                                        className="@container relative z-10 flex items-center justify-center p-8 transition-all duration-200"
+                                        className="@container flex items-center justify-center p-12 transition-all duration-200"
                                         style={{
                                             width: resizable && activeTab === "preview" ? `${previewWidth}px` : "100%",
-                                            maxWidth: `${previewWidth}px`,
+                                            // maxWidth: `${previewWidth}px`,
                                             boxShadow: isDragging ? "0 0 0 2px rgba(99, 102, 241, 0.4)" : "none",
+                                            containerType: "inline-size",
+                                            containerName: "component-preview",
                                         }}
+                                        id={`${id}-preview`}
+                                        data-breakpoint={activeBreakpoint}
                                     >
-                                        <div data-breakpoint={activeBreakpoint} className="w-full flex justify-center items-center" id={`${id}-preview`}
-                                            style={{
-                                                // Aplicamos un estilo personalizado para simular los breakpoints
-                                                // Esto permite que las clases responsive de Tailwind se activen
-                                                // basadas en el ancho del contenedor, no de la ventana
-                                                "--tw-current-width": `${previewWidth}px`,
-                                            }}>
-                                            {component}
-                                        </div>
+                                        {component}
                                     </div>
                                 </div>
 
@@ -289,11 +284,15 @@ export function ComponentPreview({
                             </div>
                         </div>
                     ) : activeTab === "code" ? (
-                        <CodeHighlighter code={usageCode} language="tsx" showLineNumbers={true} />
+                        <div className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+                            <div className="scroll-custom max-h-[500px] overflow-auto">
+                                <CodeHighlighter code={usageCode} language="tsx" showLineNumbers={true} />
+                            </div>
+                        </div>
                     ) : (
                         sourceCode && (
                             <div className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-                                <div className="max-h-[500px] overflow-auto">
+                                <div className="scroll-custom max-h-[500px] overflow-auto">
                                     <CodeHighlighter code={sourceCode} language="tsx" showLineNumbers={true} />
                                 </div>
                             </div>

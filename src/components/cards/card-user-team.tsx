@@ -31,7 +31,7 @@ export function CardUserTeam({
     onBookmark,
 }: CardUserTeamProps) {
     return (
-        <div className="pt-0 text-black relative rounded-3xl w-[80vw] md:pt-7 bg-white shadow-lg">
+        <div className="pt-0 text-black relative rounded-3xl w-full md:pt-7 bg-white shadow-lg">
             <img
                 src={companyLogo}
                 className="absolute md:top-5 md:right-5 md:left-auto md:border-transparent md:translate-0 -translate-x-1/2 -translate-y-1/2 top-0 left-1/2 w-20 aspect-square rounded-full border-solid border-6 border-white"
