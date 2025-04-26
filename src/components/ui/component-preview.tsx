@@ -6,7 +6,6 @@ import { CodeIcon, EyeIcon, FileCodeIcon, Smartphone, Tablet, Monitor, Maximize2
 import { formatComponentCode } from "@src/lib/utils"
 import { motion } from "framer-motion"
 import { CodeHighlighter } from "@src/components/ui/code-highlighter"
-// import { ClassModifier } from "@src/components/ui/class-modifier"
 import { useTransformTailwindClasses } from "@src/hooks/useTransformTailwindClasses";
 
 interface ComponentCodePreviewProps {
@@ -57,6 +56,17 @@ export function ComponentPreview({
     const previewRef = useRef<HTMLDivElement>(null)
     const previewContainerRef = useRef<HTMLDivElement>(null)
 
+    const handleMouseUp = useCallback(() => {
+        setIsDragging(false)
+    }, [])
+
+    const setBreakpoint = (width: number) => {
+        setPreviewWidth(Math.min(width, maxWidth))
+        setActiveBreakpoint(
+            (Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]).find(([, w]) => w === width)?.[0] || null,
+        )
+    }
+
     const updateMaxWidth = useCallback(() => {
         if (containerRef.current) {
             const containerWidth = containerRef.current.getBoundingClientRect().width
@@ -87,16 +97,6 @@ export function ComponentPreview({
         [isDragging, maxWidth],
     )
 
-    const handleMouseUp = useCallback(() => {
-        setIsDragging(false)
-    }, [])
-
-    const setBreakpoint = (width: number) => {
-        setPreviewWidth(Math.min(width, maxWidth))
-        setActiveBreakpoint(
-            (Object.entries(TAILWIND_BREAKPOINTS) as [BreakpointKey, number][]).find(([, w]) => w === width)?.[0] || null,
-        )
-    }
     // Determinar el breakpoint activo basado en el ancho actual
     useEffect(() => {
         const determineBreakpoint = () => {
@@ -223,22 +223,20 @@ export function ComponentPreview({
                                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjlmYWZiIi8+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiNmOWZhZmIiLz48cmVjdCB4PSIxMCIgeT0iMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjBmMGYwIi8+PHJlY3QgeD0iMCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg==')] opacity-50 dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMjAyMDIwIi8+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiMyMDIwMjAiLz48cmVjdCB4PSIxMCIgeT0iMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMmQyZDJkIi8+PHJlY3QgeD0iMCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzJkMmQyZCIvPjwvc3ZnPg==')] dark:opacity-30"></div>
 
                                 {/* Contenedor del componente con ancho ajustable */}
-                                <div className="relative">
-                                    <div
-                                        ref={previewRef}
-                                        className="@container flex items-center justify-center p-12 transition-all duration-200"
-                                        style={{
-                                            width: resizable && activeTab === "preview" ? `${previewWidth}px` : "100%",
-                                            // maxWidth: `${previewWidth}px`,
-                                            boxShadow: isDragging ? "0 0 0 2px rgba(99, 102, 241, 0.4)" : "none",
-                                            containerType: "inline-size",
-                                            containerName: "component-preview",
-                                        }}
-                                        id={`${id}-preview`}
-                                        data-breakpoint={activeBreakpoint}
-                                    >
-                                        {component}
-                                    </div>
+                                <div
+                                    ref={previewRef}
+                                    className="@container z-10 flex items-center justify-center p-12 transition-all duration-200"
+                                    style={{
+                                        // containerType: "inline-size",
+                                        // containerName: "component-preview",
+                                        width: resizable && activeTab === "preview" ? `${previewWidth}px` : "100%",
+                                        maxWidth: `${previewWidth}px`,
+                                        boxShadow: isDragging ? "0 0 0 2px rgba(99, 102, 241, 0.4)" : "none",
+                                    }}
+                                    id={`${id}-preview`}
+                                    data-breakpoint={activeBreakpoint}
+                                >
+                                    {component}
                                 </div>
 
                                 {/* Control de resize - Siempre visible */}
