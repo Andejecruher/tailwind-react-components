@@ -5,7 +5,7 @@ import FlowersSvg from "@src/assets/logos/flowers.svg"
 
 export function SignUpFlowerBasic() {
     return (
-        <div className="card bg-white rounded-4xl @md:w-[85%] w-2/3 max-w-[800px] pr-0 @md:p-4 flex @md:items-center @md:flex-row flex-col shadow-mega text-black">
+        <div className="card bg-white rounded-4xl @md:w-[85%] w-2/3 max-w-[800px] @md:pr-0 p-4 flex @md:items-center @md:flex-row flex-col shadow-mega text-black">
             <div className="image relative rounded-3xl overflow-hidden self-stretch @md:w-[45%] w-full @md:h-auto h-[280px]">
                 <img src={FlowersImg} className="absolute w-full @md:h-full h-[180%] aspect-[2/1] object-cover" />
             </div>
