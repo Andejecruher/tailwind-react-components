@@ -88,7 +88,7 @@ export function formatComponentCode(
   // Generate component example code
   return `
   // Importar el componente desde su ubicación
-import { ${componentName} } from "@/components/ui/button";
+import { ${componentName} } from "@src/components/ui/${componentName}";
 
 export function Example() {
   return (
@@ -97,14 +97,4 @@ export function Example() {
   }${childrenContent ? `\n    ${childrenContent}\n  </${componentName}>` : ""}
   );
 }`;
-}
-
-// Función para determinar el breakpoint de Tailwind basado en un ancho
-export function getTailwindBreakpoint(width: number): string {
-  if (width >= 1536) return "2xl";
-  if (width >= 1280) return "xl";
-  if (width >= 1024) return "lg";
-  if (width >= 768) return "md";
-  if (width >= 640) return "sm";
-  return "xs";
 }

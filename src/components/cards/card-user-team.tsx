@@ -31,13 +31,13 @@ export function CardUserTeam({
     onBookmark,
 }: CardUserTeamProps) {
     return (
-        <div className="pt-0 text-black relative rounded-3xl w-full md:pt-7 bg-white shadow-lg">
+        <div className="pt-0 text-black relative rounded-3xl w-full @md:pt-7 bg-white shadow-lg">
             <img
                 src={companyLogo}
-                className="absolute md:top-5 md:right-5 md:left-auto md:border-transparent md:translate-0 -translate-x-1/2 -translate-y-1/2 top-0 left-1/2 w-20 aspect-square rounded-full border-solid border-6 border-white"
+                className="absolute @md:top-5 @md:right-5 @md:left-auto @md:border-transparent @md:translate-0 -translate-x-1/2 -translate-y-1/2 top-0 left-1/2 w-20 aspect-square rounded-full border-solid border-6 border-white"
             />
-            <div className="p-6 flex flex-col justify-center items-center text-center md:text-left md:justify-start md:items-start">
-                <h2 className="font-bold mt-5 md:mt-0">{companyName}</h2>
+            <div className="p-6 flex flex-col justify-center items-center text-center @md:text-left @md:justify-start @md:items-start">
+                <h2 className="font-bold mt-5 @md:mt-0">{companyName}</h2>
                 <h3 className="font-normal text-muted text-base mt-2">{positionLevel}</h3>
                 <h4 className="font-bold text-xl">{positionTitle}</h4>
                 <h5 className="font-normal text-muted text-base">
@@ -54,11 +54,11 @@ export function CardUserTeam({
             </div>
             <div className="flex items-center justify-between gap-2 px-6 py-3 border-t-1 border-solid border-[#e5e9ec]">
                 {matchPercentage !== undefined && avatarUrl && (
-                    <div className="mr-auto items-center gap-3 pr-5 text-sm rounded-[50px] bg-[#f6f9fa] hidden md:inline-flex">
+                    <div className="mr-auto items-center gap-3 pr-5 text-sm rounded-[50px] bg-[#f6f9fa] hidden @md:inline-flex">
                         <img src={avatarUrl} className="w-10" />
                         <p className="text-muted">
                             <em>{matchPercentage}%</em>
-                            <span className="text hidden md:inline"> profile match </span>
+                            <span className="text hidden @md:inline"> profile match </span>
                         </p>
                     </div>
                 )}

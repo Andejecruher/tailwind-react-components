@@ -3,8 +3,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+
+  /* Fonts */
   --font-family-dancing-script: "Dancing Script", cursive;
 
+  /* Colors */
   --color-background: 0 0% 100%;
   --color-foreground: 240 10% 3.9%;
   --color-card: 0 0% 100%;
@@ -31,6 +34,14 @@
   --color-chart-4: 0 84.2% 60.2%;
   --color-chart-5: 240 5.9% 90%;
   --color-scrollbar: 233 44% 32%;
+
+  /* Breakpoints Container Querys */
+  --container-sm: 40rem;
+  --container-md: 48rem;
+  --container-lg: 64rem;
+  --container-xl: 80rem;
+  --container-2xl: 90rem;
+  --container-3xl: 100rem;
 }
 
 .dark {

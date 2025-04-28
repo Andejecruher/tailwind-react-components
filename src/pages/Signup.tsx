@@ -25,20 +25,6 @@ export default function SignupPage() {
                 componentProps={{}}
                 sourceCode={SignUpFlowerBasicSource} // Pass the source code as a prop
             />
-
-            {/* SignUp Flower Basic */}
-            <ComponentPreview
-                id="signup-flower-basic-2"
-                title="Formulario de Registro Básico"
-                description="Formulario simple con campos de entrada y un botón de registro."
-                component={
-                    <SignUpFlowerBasic />
-                }
-                componentName="SignUpFlowerBasic"
-                componentProps={{}}
-                sourceCode={SignUpFlowerBasicSource} // Pass the source code as a prop
-            />
-
         </div>
     )
 }

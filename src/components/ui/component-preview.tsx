@@ -2,11 +2,11 @@ import type React from "react"
 
 import type { ReactNode } from "react"
 import { useState, useRef, useCallback, useEffect } from "react"
-import { CodeIcon, EyeIcon, FileCodeIcon, Smartphone, Tablet, Monitor, Maximize2 } from "lucide-react"
+import { CodeIcon, EyeIcon, FileCodeIcon, Smartphone, Tablet, Laptop, Monitor, Maximize2 } from "lucide-react"
 import { formatComponentCode } from "@src/lib/utils"
 import { motion } from "framer-motion"
 import { CodeHighlighter } from "@src/components/ui/code-highlighter"
-import { useTransformTailwindClasses } from "@src/hooks/useTransformTailwindClasses";
+import {restoreTailwindBreakpoints} from "@src/hooks/useTransformTailwindClasses"
 
 interface ComponentCodePreviewProps {
     title: string
@@ -45,7 +45,6 @@ export function ComponentPreview({
     code,
     resizable = true,
 }: ComponentCodePreviewProps) {
-    useTransformTailwindClasses(`${id}-preview`);
     const [activeTab, setActiveTab] = useState<"preview" | "code" | "source">("preview")
     const usageCode = code || formatComponentCode(componentName, componentProps)
     const [activeBreakpoint, setActiveBreakpoint] = useState<BreakpointKey | null>(null)
@@ -181,25 +180,31 @@ export function ComponentPreview({
                                         <BreakpointButton
                                             onClick={() => setBreakpoint(320)}
                                             icon={<Smartphone className="h-4 w-4" />}
-                                            label="320px"
+                                            label="320px (xs)"
                                             isActive={previewWidth === 320}
                                         />
                                         <BreakpointButton
-                                            onClick={() => setBreakpoint(375)}
-                                            icon={<Smartphone className="h-4 w-4" />}
-                                            label="375px"
-                                            isActive={previewWidth === 375}
+                                            onClick={() => setBreakpoint(640)}
+                                            icon={<Tablet className="h-4 w-4" />}
+                                            label="640px (sm)"
+                                            isActive={previewWidth === 640}
                                         />
                                         <BreakpointButton
                                             onClick={() => setBreakpoint(768)}
-                                            icon={<Tablet className="h-4 w-4" />}
-                                            label="768px"
+                                            icon={<Laptop className="h-4 w-4" />}
+                                            label="768px (md)"
                                             isActive={previewWidth === 768}
+                                        />
+                                        <BreakpointButton
+                                            onClick={() => setBreakpoint(1024)}
+                                            icon={<Laptop className="h-4 w-4" />}
+                                            label="1024px (lg)"
+                                            isActive={previewWidth === 1024}
                                         />
                                         <BreakpointButton
                                             onClick={() => setBreakpoint(1280)}
                                             icon={<Monitor className="h-4 w-4" />}
-                                            label="1280px"
+                                            label="1280px (xl)"
                                             isActive={previewWidth === 1280}
                                         />
                                         <BreakpointButton
@@ -291,7 +296,7 @@ export function ComponentPreview({
                         sourceCode && (
                             <div className="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
                                 <div className="scroll-custom max-h-[500px] overflow-auto">
-                                    <CodeHighlighter code={sourceCode} language="tsx" showLineNumbers={true} />
+                                    <CodeHighlighter code={restoreTailwindBreakpoints(sourceCode)} language="tsx" showLineNumbers={true} />
                                 </div>
                             </div>
                         )
