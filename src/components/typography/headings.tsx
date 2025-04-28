@@ -1,6 +1,6 @@
 export function Headings() {
     return (
-        <div className="space-y-4">
+        <div className="space-y-4 bg-background-foreground p-4 dark:bg-background-foreground dark:text-background-foreground">
             <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                 Encabezado 1
             </h1>

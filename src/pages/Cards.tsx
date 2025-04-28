@@ -4,13 +4,11 @@ import { ComponentPreview } from "@src/components/ui/component-preview"
 import { BasicCard } from "@src/components/cards/basic-card"
 import { ProductCard } from "@src/components/cards/product-card"
 import { CardUserTeam } from "@src/components/cards/card-user-team"
-import BreakpointDemo from "@src/components/breackpoint-demo"
 
 // // Importing the code for component preview
 import basicCardSource from "@src/components/cards/basic-card.tsx?raw"
 import productCardSource from "@src/components/cards/product-card.tsx?raw"
 import cardUserTeamSource from "@src/components/cards/card-user-team.tsx?raw"
-import sourceBreackpointDemo from "@src/components/breackpoint-demo.tsx?raw"
 
 // import assets for the components
 import logoGoogle from "@src/assets/logos/google.png";
@@ -18,17 +16,6 @@ import logoGoogle from "@src/assets/logos/google.png";
 export default function CardsPage() {
   return (
     <div className="grid gap-8">
-
-      {/* Breackpoint Demo */}
-      <ComponentPreview
-        id="breackpoint-demo"
-        title="Demostración de Breackpoint"
-        description="Ejemplo de cómo se comportan los componentes en diferentes tamaños de pantalla."
-        component={<BreakpointDemo />}
-        componentName="BreakpointDemo"
-        componentProps={{}}
-        sourceCode={sourceBreackpointDemo} // Pass the source code as a prop
-      />
 
       {/* Card Basic */}
       <ComponentPreview

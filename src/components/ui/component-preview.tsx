@@ -221,7 +221,7 @@ export function ComponentPreview({
                             )}
                             <div
                                 ref={previewContainerRef}
-                                className="relative flex justify-center overflow-visible rounded-xl bg-gray-50 dark:bg-gray-800/50"
+                                className="relative p-12 flex justify-center overflow-visible rounded-xl bg-gray-50 dark:bg-gray-800/50"
                                 style={{ minHeight: "200px", paddingRight: "20px" }}
                             >
                                 {/* Fondo cuadriculado para indicar transparencia */}
@@ -230,7 +230,7 @@ export function ComponentPreview({
                                 {/* Contenedor del componente con ancho ajustable */}
                                 <div
                                     ref={previewRef}
-                                    className="@container z-10 flex items-center justify-center p-12 transition-all duration-200"
+                                    className="@container z-10 flex items-center justify-center transition-all duration-200"
                                     style={{
                                         // containerType: "inline-size",
                                         // containerName: "component-preview",
