@@ -38,7 +38,7 @@ export function ContactForm() {
     };
 
     return (
-        <form className="w-full max-w-sm space-y-4" onSubmit={handleSubmit}>
+        <form className="w-full max-w-sm space-y-4 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 p-4" onSubmit={handleSubmit}>
             <div className="space-y-2">
                 <label
                     htmlFor="name"

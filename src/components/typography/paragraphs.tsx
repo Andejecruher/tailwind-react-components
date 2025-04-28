@@ -1,6 +1,6 @@
 export function Paragraphs() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 p-4">
       <p className="leading-7 [&:not(:first-child)]:mt-6">
         Este es un párrafo estándar con un tamaño de texto base y un espaciado de línea adecuado para una buena legibilidad.
       </p>

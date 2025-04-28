@@ -1,6 +1,6 @@
 export function Lists() {
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 p-4">
             <div>
                 <h4 className="mb-2 text-lg font-medium">Lista ordenada</h4>
                 <ol className="list-decimal space-y-1 pl-6">
